@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include <memory>
 
 #include "GameObject.h"
 #include "InputHandler.h"
@@ -39,7 +40,7 @@ private:
 
   std::vector<GameObject*> m_gameObjects;
 
-  InputHandler m_inputHandler;
+  std::shared_ptr<InputHandler> m_inputHandler;
 };
 
 #endif

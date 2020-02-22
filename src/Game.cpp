@@ -7,6 +7,7 @@
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+  m_inputHandler = std::make_shared<InputHandler>();
   int flags = 0;
 
   if (fullscreen)
@@ -17,7 +18,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
   if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
       std::cout << "SDL init succes" << std::endl;
-      m_inputHandler.initializeJoysticks();
+      m_inputHandler->initializeJoysticks();
       m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
       if (m_pWindow != 0)
 	{
@@ -54,7 +55,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     return false;
   }
 
-  m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+  m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate"), m_inputHandler));
   m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
   
   return true;
@@ -80,14 +81,14 @@ void Game::update()
 
 void Game::handleEvents()
 {
-  m_bRunning = m_inputHandler.update();
+  m_bRunning = m_inputHandler->update();
 }
 
 
 void Game::clean()
 {
   std::cout << "cleaning game" << std::endl;
-  m_inputHandler.clean();
+  m_inputHandler->clean();
   SDL_DestroyWindow(m_pWindow);
   SDL_DestroyRenderer(m_pRenderer);
   SDL_Quit();

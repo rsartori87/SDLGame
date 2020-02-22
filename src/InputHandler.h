@@ -19,10 +19,11 @@ public:
 
   bool update();
   void clean();
-private:
   int xvalue(int joy, int stick);
   int yvalue(int joy, int stick);
   
+private:
+
   bool m_bJoystickInitialized;
   std::vector<SDL_Joystick*> m_joysticks;
   std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;

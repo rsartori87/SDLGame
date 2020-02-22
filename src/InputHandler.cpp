@@ -96,6 +96,37 @@ bool InputHandler::update()
 		  m_joystickValues[whichOne].first->setY(0);
 		}
 	    }
+
+	  if (event.jaxis.axis == 3)
+	    {
+	      if (event.jaxis.value > m_joystickDeadZone)
+		{
+		  m_joystickValues[whichOne].second->setX(1);
+		}
+	      else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+		  m_joystickValues[whichOne].second->setX(-1);
+		}
+	      else
+		{
+		  m_joystickValues[whichOne].second->setX(0);
+		}
+	    }
+	   if (event.jaxis.axis == 4)
+	    {
+	      if (event.jaxis.value > m_joystickDeadZone)
+		{
+		  m_joystickValues[whichOne].second->setY(1);
+		}
+	      else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+		  m_joystickValues[whichOne].second->setY(-1);
+		}
+	      else
+		{
+		  m_joystickValues[whichOne].second->setY(0);
+		}
+	    }
 	}
     }
   
