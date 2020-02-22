@@ -56,7 +56,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
   }
 
   m_gameObjects.push_back(std::make_unique<Player>(new LoaderParams(100, 100, 128, 82, "animate"), m_inputHandler));
-  m_gameObjects.push_back(std::make_unique<Enemy>(new LoaderParams(300, 300, 128, 82, "animate")));
+  // m_gameObjects.push_back(std::make_unique<Enemy>(new LoaderParams(300, 300, 128, 82, "animate")));
   
   return true;
 }
