@@ -5,9 +5,6 @@
 
 void InputHandler::initializeJoysticks()
 {
-  // if (SDL_GameControllerAddMapping("03000000c6240000025b000002020000,Thrustmaster GPX Gamepad,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux")) {
-  //   std::cout << "Added mapping for my controller" << std::endl;
-  // }
   if (SDL_WasInit(SDL_INIT_JOYSTICK))
     {
       std::cout << "Initializing joystick subsystem" << std::endl;
@@ -32,7 +29,7 @@ void InputHandler::initializeJoysticks()
       SDL_JoystickEventState(SDL_ENABLE);
       m_bJoystickInitialized = true;
 
-      std::cout << "Initialised " << m_joysticks.size() << " joystick(s)";
+      std::cout << "Initialised " << m_joysticks.size() << " joystick(s)" << std::endl;
     }
   else
     {

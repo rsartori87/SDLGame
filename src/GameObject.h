@@ -10,10 +10,10 @@ public:
   virtual void draw(SDL_Renderer* pRenderer)=0;
   virtual void update()=0;
   virtual void clean()=0;
-
+  virtual ~GameObject() {}
+  
 protected:
   GameObject(const LoaderParams* pParams) {}
-  virtual ~GameObject() {}
 };
 
 #endif
