@@ -24,7 +24,14 @@ add_executable(SDLLearn
   src/SDLGameObject.cpp
   src/Vector2D.h
   src/InputHandler.h
-  src/InputHandler.cpp)
+  src/InputHandler.cpp
+  src/GameState.h
+  src/MenuState.h
+  src/MenuState.cpp
+  src/PlayState.h
+  src/PlayState.cpp
+  src/GameStateMachine.h
+  src/GameStateMachine.cpp)
 
 target_include_directories(SDLLearn PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 target_link_libraries(SDLLearn PRIVATE ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})

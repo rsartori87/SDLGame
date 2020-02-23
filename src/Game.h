@@ -7,6 +7,7 @@
 
 #include "GameObject.h"
 #include "InputHandler.h"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -37,6 +38,8 @@ private:
   std::vector<std::unique_ptr<GameObject>> m_gameObjects;
 
   std::shared_ptr<InputHandler> m_inputHandler;
+
+  GameStateMachine* m_pGameStateMachine;
 };
 
 #endif

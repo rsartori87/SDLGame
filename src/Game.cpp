@@ -4,9 +4,14 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "MenuState.h"
+#include "PlayState.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+  m_pGameStateMachine = new GameStateMachine();
+  m_pGameStateMachine->changeState(new MenuState());
+  
   m_inputHandler = std::make_shared<InputHandler>();
   int flags = 0;
 
@@ -82,6 +87,11 @@ void Game::update()
 void Game::handleEvents()
 {
   m_bRunning = m_inputHandler->update();
+  
+  if (m_inputHandler->isKeyDown(SDL_SCANCODE_RETURN))
+    {
+      m_pGameStateMachine->changeState(new PlayState());
+    }
 }
 
 
