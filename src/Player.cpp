@@ -55,4 +55,21 @@ void Player::handleInput()
 	  m_velocity.setY(1 * m_inputHandler->yvalue(0, 2));
 	}
     }
+
+  if (m_inputHandler->isKeyDown(SDL_SCANCODE_RIGHT))
+    {
+      m_velocity.setX(2);
+    }
+  if (m_inputHandler->isKeyDown(SDL_SCANCODE_LEFT))
+    {
+      m_velocity.setX(-2);
+    }
+  if (m_inputHandler->isKeyDown(SDL_SCANCODE_UP))
+    {
+      m_velocity.setY(-2);
+    }
+  if (m_inputHandler->isKeyDown(SDL_SCANCODE_DOWN))
+    {
+      m_velocity.setY(2);
+    }
 }
