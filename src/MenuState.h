@@ -23,7 +23,7 @@ public:
 
 private:
   static const std::string s_menuID;
-  std::vector<GameObject*> m_gameObjects;
+  std::vector<std::unique_ptr<GameObject>> m_gameObjects;
   SDL_Renderer* m_renderer;
   std::shared_ptr<InputHandler> m_inputHandler;
 
