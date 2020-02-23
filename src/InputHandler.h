@@ -48,6 +48,17 @@ public:
   
 private:
 
+  void onKeyDown();
+  void onKeyUp();
+
+  void onMouseMove(SDL_Event& event);
+  void onMouseButtonDown(SDL_Event& event);
+  void onMouseButtonUp(SDL_Event& event);
+
+  void onJoystickAxisMove(SDL_Event& event);
+  void onJoystickButtonDown(SDL_Event& event);
+  void onJoystickButtonUp(SDL_Event& event);
+
   bool m_bJoystickInitialized;
   std::vector<SDL_Joystick*> m_joysticks;
   std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
