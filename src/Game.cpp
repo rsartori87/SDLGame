@@ -9,9 +9,6 @@
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-  m_pGameStateMachine = new GameStateMachine();
-  m_pGameStateMachine->changeState(new MenuState());
-  
   m_inputHandler = std::make_shared<InputHandler>();
   int flags = 0;
 
@@ -56,12 +53,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
   std::cout << "init success" << std::endl;
   m_bRunning = true;
 
-  if (!TheTextureManager::instance()->load("assets/animate-alpha.png", "animate", m_pRenderer)) {
-    return false;
-  }
+  m_pGameStateMachine = new GameStateMachine();
+  m_pGameStateMachine->changeState(new MenuState(m_pRenderer, m_inputHandler));
 
-  m_gameObjects.push_back(std::make_unique<Player>(new LoaderParams(100, 100, 128, 82, "animate"), m_inputHandler));
-  // m_gameObjects.push_back(std::make_unique<Enemy>(new LoaderParams(300, 300, 128, 82, "animate")));
+  // if (!TheTextureManager::instance()->load("assets/animate-alpha.png", "animate", m_pRenderer)) {
+  //   return false;
+  // }
+
+  // m_gameObjects.push_back(std::make_unique<Player>(new LoaderParams(100, 100, 128, 82, "animate"), m_inputHandler));
   
   return true;
 }
@@ -70,18 +69,14 @@ void Game::render()
 {
   SDL_RenderClear(m_pRenderer);
 
-  for (auto& i : m_gameObjects) {
-    i->draw(m_pRenderer);
-  }
+  m_pGameStateMachine->render();
   
   SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
 {
-  for (auto& i : m_gameObjects) {
-    i->update();
-  }
+  m_pGameStateMachine->update();
 }
 
 void Game::handleEvents()

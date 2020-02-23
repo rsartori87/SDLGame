@@ -31,7 +31,9 @@ add_executable(SDLLearn
   src/PlayState.h
   src/PlayState.cpp
   src/GameStateMachine.h
-  src/GameStateMachine.cpp)
+  src/GameStateMachine.cpp
+  src/MenuButton.h
+  src/MenuButton.cpp)
 
 target_include_directories(SDLLearn PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 target_link_libraries(SDLLearn PRIVATE ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
